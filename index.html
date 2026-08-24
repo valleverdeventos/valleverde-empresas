@@ -1,0 +1,762 @@
+<meta charset="utf-8">
+<title>Configurador VALLEVERDE</title>
+<meta name="description" content="Armá tu evento de empresa en VALLEVERDE y mirá cómo queda antes de consultar. Salón, parque y estacionamiento interno en Bahía Blanca, hasta 120 personas.">
+<meta name="theme-color" content="#F6F3EE">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="VALLEVERDE Eventos">
+<meta property="og:title" content="Eventos de empresa en VALLEVERDE — Bahía Blanca">
+<meta property="og:description" content="Elegí formato, sector, invitados y servicios, y mirá cómo se ve tu evento antes de consultar.">
+<meta property="og:image" content="img/og-valleverde-empresas.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Chivo+Mono:wght@400;500;600&family=Familjen+Grotesk:wght@400;500;600;700&display=swap">
+
+<style>
+/* LEMON MILK, la tipografía del logo. Va incrustada en el archivo: no la
+   sirve Google ni ningún otro host, así que carga siempre y en cualquier
+   dispositivo. Subconjunto latino, tres pesos, unos 75 KB en total. */
+@font-face{font-family:'Lemon Milk';font-weight:300;font-style:normal;font-display:swap;
+  src:url(fonts/LemonMilklight.woff2) format('woff2')}
+@font-face{font-family:'Lemon Milk';font-weight:400;font-style:normal;font-display:swap;
+  src:url(fonts/LemonMilk.woff2) format('woff2')}
+@font-face{font-family:'Lemon Milk';font-weight:700;font-style:normal;font-display:swap;
+  src:url(fonts/LemonMilkbold.woff2) format('woff2')}
+
+/* Estudio claro: el lugar es el producto y ocupa el centro.
+   Un solo tema, todos los colores declarados acá. */
+:root{
+  --paper:#F6F3EE;
+  --paper-2:#EFEBE3;
+  --card:#FFFFFF;
+  --ink:#17151A;
+  --soft:#5B545C;
+  --faint:#948C93;
+  --line:#E0D9CE;
+  --line-2:#CDC3B5;
+  --fucsia:#E8005F;
+  --fucsia-deep:#C4004F;
+  --pad:clamp(16px,4vw,44px);
+  --maxw:1240px;
+
+  --f-display:'Anton', 'Arial Narrow', Impact, sans-serif;
+}
+*{box-sizing:border-box}
+html{background:var(--paper)}
+body{
+  margin:0;background:var(--paper);color:var(--ink);
+  font-family:'Familjen Grotesk',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%}
+/* :where() no suma especificidad, así el reset no le gana al color de
+   los botones. Con `a:link` a secas, el texto del CTA se volvía tinta. */
+:where(a,a:link,a:visited){color:inherit}
+p{margin:0}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+:focus-visible{outline:2px solid var(--fucsia);outline-offset:3px}
+.mono{font-family:'Chivo Mono',ui-monospace,monospace}
+
+/* ---------- barra ---------- */
+.bar{
+  position:sticky;top:0;z-index:30;background:rgba(246,243,238,.92);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line);
+}
+.bar-in{
+  max-width:var(--maxw);margin:0 auto;padding:11px var(--pad);
+  display:flex;align-items:center;justify-content:space-between;gap:14px;
+}
+.lockup{display:flex;align-items:center;gap:11px}
+.lockup .iso{width:34px;height:34px;border-radius:50%;flex:none}
+.lockup .txt{display:flex;flex-direction:column;line-height:1}
+.lockup .txt b{font-family:'Lemon Milk','Familjen Grotesk',sans-serif;font-weight:400;letter-spacing:.15em;font-size:13px;text-transform:uppercase}
+.lockup .txt small{font-size:8.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--fucsia);margin-top:3px;font-weight:600}
+.bar .right{display:flex;align-items:center;gap:18px}
+.bar .meta{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+@media (max-width:680px){.bar .meta{display:none}}
+.mini-cta{
+  background:var(--ink);color:#fff;font-size:12.5px;font-weight:600;
+  padding:9px 16px;border-radius:100px;text-decoration:none;
+}
+
+/* ---------- apertura: la palabra VALLEVERDE es la mancha ----------
+   Dos líneas de tipografía, las dos estiradas al ancho exacto de la
+   pantalla con textLength. Abajo VALLEVERDE en fucsia, encima el
+   titular cruzándola. El contorno crema lo despega del fondo. */
+.franja{
+  position:relative;background:var(--paper);
+  padding:clamp(22px,3vw,40px) 0 clamp(14px,2.2vw,28px);
+}
+.franja .eyebrow{color:var(--faint);text-align:center;padding-inline:var(--pad);margin-bottom:clamp(12px,1.8vw,22px)}
+.mancha{line-height:0}
+.mancha svg{display:block;width:100%;height:auto}
+.mancha .palabra{
+  font-family:'Lemon Milk','Anton',Impact,sans-serif;font-weight:700;
+  fill:var(--fucsia);
+}
+.mancha .frase{
+  font-family:'Familjen Grotesk',sans-serif;font-weight:500;
+  fill:#FFFFFF;stroke:var(--ink);stroke-width:1.4;stroke-linejoin:round;
+  paint-order:stroke fill;letter-spacing:.5px;
+}
+/* En pantalla ancha la frase entra justo entre la segunda L y la E que
+   sigue a la V. En pantalla angosta ese hueco queda muy chico para leerla,
+   así que ahí pasa a la versión de dos renglones. */
+.mancha .angosta{display:none}
+.mancha .entre-letras{stroke-width:.7;letter-spacing:0}
+@media (max-width:900px){
+  .mancha .entre-letras{display:none}
+  .mancha .angosta{display:inline}
+}
+.solo-lectores{
+  position:absolute;width:1px;height:1px;overflow:hidden;
+  clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;
+}
+
+/* ---------- escenario ---------- */
+.stage{
+  position:relative;
+  padding:0 var(--pad) clamp(14px,2vw,22px);
+  max-width:var(--maxw);margin:0 auto;
+}
+.stage::before{
+  content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(58% 52% at 50% 42%, rgba(255,255,255,.95), rgba(246,243,238,0) 72%);
+}
+.stage-in{position:relative;z-index:1}
+.eyebrow{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);text-align:center}
+.title{
+  text-align:center;margin:12px auto 0;max-width:19ch;
+  font-family:var(--f-display);font-weight:400;text-transform:uppercase;
+  font-size:clamp(34px,5.6vw,68px);line-height:1.0;letter-spacing:.004em;
+  text-wrap:balance;
+}
+.title em{font-style:normal;color:var(--fucsia)}
+
+/* visor */
+.viewer{
+  position:relative;margin:clamp(34px,4.6vw,66px) auto 0;max-width:940px;
+  aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:var(--paper-2);
+  box-shadow:0 34px 70px -44px rgba(23,21,26,.55), 0 2px 0 rgba(255,255,255,.7) inset;
+}
+@media (max-width:600px){.viewer{aspect-ratio:4/3;border-radius:14px}}
+.viewer img.shot{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transition:opacity .55s ease, transform 7s linear;transform:scale(1.02);
+}
+.viewer img.shot.on{opacity:1;transform:scale(1.055)}
+.viewer .mark{
+  position:absolute;right:14px;top:14px;z-index:4;width:44px;height:44px;border-radius:50%;
+  opacity:.94;box-shadow:0 6px 18px -8px rgba(23,21,26,.7);
+}
+.viewer .tag{position:absolute;left:14px;bottom:14px;z-index:3;display:flex;gap:7px;flex-wrap:wrap}
+.viewer .tag b{
+  font-family:'Chivo Mono',monospace;font-size:10.5px;font-weight:500;letter-spacing:.1em;
+  text-transform:uppercase;background:rgba(23,21,26,.62);color:#F6F3EE;
+  padding:7px 11px;border-radius:100px;backdrop-filter:blur(6px);
+}
+.viewer .tag b.hot{background:var(--fucsia);color:#fff}
+
+/* ---------- panel de opciones ---------- */
+.panel{max-width:var(--maxw);margin:0 auto;padding:clamp(16px,2.4vw,26px) var(--pad) clamp(40px,6vw,72px)}
+.opts{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(18px,2.6vw,30px)}
+@media (max-width:820px){.opts{grid-template-columns:1fr}}
+.opt{display:flex;flex-direction:column;gap:11px}
+.opt-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.opt-h .n{font-family:'Chivo Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+.opt-h .v{font-size:13.5px;font-weight:600;color:var(--ink)}
+.row{display:flex;flex-wrap:wrap;gap:8px}
+.chip{
+  border:1px solid var(--line-2);background:var(--card);border-radius:100px;
+  padding:10px 16px;font-size:13.5px;font-weight:500;color:var(--soft);
+  transition:border-color .16s ease,color .16s ease,background .16s ease,transform .16s ease;
+}
+.chip:hover{border-color:var(--ink);color:var(--ink);transform:translateY(-1px)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip.svc[aria-pressed="true"]{background:var(--fucsia);border-color:var(--fucsia);color:#fff}
+
+.guests{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.guests input[type=range]{
+  -webkit-appearance:none;appearance:none;flex:1;min-width:180px;height:2px;
+  background:var(--line-2);border-radius:2px;outline:none;
+}
+.guests input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:20px;height:20px;border-radius:50%;
+  background:var(--fucsia);border:3px solid var(--card);cursor:grab;
+  box-shadow:0 1px 6px rgba(23,21,26,.28);
+}
+.guests input[type=range]::-moz-range-thumb{
+  width:20px;height:20px;border-radius:50%;background:var(--fucsia);
+  border:3px solid var(--card);cursor:grab;box-shadow:0 1px 6px rgba(23,21,26,.28);
+}
+.guests .read{
+  font-family:'Chivo Mono',monospace;font-variant-numeric:tabular-nums;
+  font-size:26px;font-weight:600;letter-spacing:-.02em;min-width:3.4ch;text-align:right;
+}
+.guests .read small{display:block;font-size:10px;letter-spacing:.14em;color:var(--faint);font-weight:500;text-align:right}
+
+/* ---------- resumen ---------- */
+.summary{
+  margin-top:clamp(26px,4vw,40px);border:1px solid var(--line);background:var(--card);
+  border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1.35fr .65fr;
+}
+@media (max-width:820px){.summary{grid-template-columns:1fr}}
+.sum-l{padding:clamp(22px,3vw,30px);display:flex;flex-direction:column;gap:14px}
+.sum-l h3{margin:0;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);font-family:'Chivo Mono',monospace;font-weight:500}
+.sum-line{font-size:clamp(18px,2.3vw,25px);font-weight:600;letter-spacing:-.02em;line-height:1.25}
+.sum-line b{color:var(--fucsia);font-weight:600}
+.sum-svc{font-size:14.5px;color:var(--soft)}
+.sum-note{font-size:12.5px;color:var(--faint);line-height:1.45;max-width:52ch}
+.sum-r{
+  background:var(--paper-2);border-left:1px solid var(--line);
+  padding:clamp(22px,3vw,30px);display:flex;flex-direction:column;gap:12px;justify-content:center;
+}
+@media (max-width:820px){.sum-r{border-left:0;border-top:1px solid var(--line)}}
+.btn{
+  display:flex;align-items:center;justify-content:center;gap:9px;text-align:center;
+  padding:15px 20px;border-radius:100px;font-size:14.5px;font-weight:600;text-decoration:none;
+  transition:transform .15s ease,background .15s ease,border-color .15s ease;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-1{background:var(--fucsia);color:#fff}
+.btn-1:hover{background:var(--fucsia-deep)}
+.btn-2{border:1px solid var(--line-2);color:var(--ink);background:var(--card)}
+.btn-2:hover{border-color:var(--ink)}
+.sum-r .fine{font-size:11.5px;color:var(--faint);text-align:center;line-height:1.4}
+
+/* ---------- puente entre el configurador y el bloque que se arma ---------- */
+.puente{background:var(--paper-2);border-block:1px solid var(--line);overflow:hidden}
+.puente-in{max-width:var(--maxw);margin:0 auto;padding:clamp(30px,4.4vw,52px) var(--pad) clamp(22px,3vw,34px)}
+.puente .eyebrow{text-align:left}
+.puente h2{
+  margin:10px 0 0;font-family:var(--f-display);font-weight:400;text-transform:uppercase;
+  font-size:clamp(24px,3.6vw,44px);letter-spacing:.004em;line-height:1.02;max-width:20ch;
+}
+.puente h2 em{font-style:normal;color:var(--fucsia)}
+.datos{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.4vw,28px);margin-top:clamp(22px,3vw,32px)}
+@media (max-width:640px){.datos{grid-template-columns:1fr}}
+.dato{border-top:2px solid var(--ink);padding-top:12px;display:flex;flex-direction:column;gap:2px}
+.dato .n{font-family:var(--f-display);font-weight:400;font-size:clamp(34px,4.4vw,52px);line-height:.9;font-variant-numeric:tabular-nums;text-transform:uppercase}
+.dato .k{font-family:'Chivo Mono',monospace;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-top:6px}
+.dato .d{font-size:14px;color:var(--soft)}
+
+.cinta{border-top:1px solid var(--line);background:var(--paper);overflow:hidden;position:relative}
+.cinta .via{display:flex;width:max-content;animation:correr 38s linear infinite}
+.cinta span{
+  font-family:var(--f-display);font-weight:400;text-transform:uppercase;white-space:nowrap;
+  font-size:clamp(15px,1.9vw,22px);letter-spacing:.04em;color:var(--ink);
+  padding:12px 0;
+}
+.cinta b{color:var(--fucsia);font-weight:400;padding:0 14px}
+@keyframes correr{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+.cinta:hover .via{animation-play-state:paused}
+
+/* ===================================================================
+   BLOQUE QUE SE ARMA AL SCROLLEAR
+   El mismo lugar de mediodía a noche. El isotipo se sella al final.
+   =================================================================== */
+.build{position:relative;height:340vh;background:var(--paper)}
+.build .sticky{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden}
+.build-in{max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad);width:100%}
+.build-head{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;margin-bottom:16px}
+.build-head h2{
+  margin:0;font-family:var(--f-display);font-weight:400;text-transform:uppercase;
+  font-size:clamp(26px,4.2vw,52px);letter-spacing:.004em;line-height:1.02;max-width:17ch;
+}
+.build-head .step{
+  font-family:'Chivo Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint);
+  display:flex;gap:14px;
+}
+.build-head .step span{transition:color .35s ease}
+.build-head .step span.on{color:var(--fucsia)}
+
+.frame{
+  position:relative;width:100%;height:min(60vh,520px);border-radius:18px;overflow:hidden;
+  background:var(--paper-2);box-shadow:0 40px 80px -50px rgba(23,21,26,.6);
+}
+.frame .layer{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;will-change:clip-path}
+.frame .l2{clip-path:inset(var(--w2,100%) 0 0 0)}
+.frame .l3{clip-path:inset(var(--w3,100%) 0 0 0)}
+.frame .veil{
+  position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(0deg,rgba(11,12,13,.55),rgba(11,12,13,0) 52%);
+}
+.frame .stamp{
+  position:absolute;left:50%;top:50%;width:clamp(120px,17vw,190px);height:auto;border-radius:50%;
+  transform:translate(-50%,-50%) scale(var(--ss,.6));opacity:var(--so,0);
+  will-change:transform,opacity;
+}
+.frame .cap{
+  position:absolute;left:18px;bottom:16px;z-index:3;color:#F6F3EE;
+}
+.frame .cap .k{font-family:'Chivo Mono',monospace;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.78}
+.frame .cap .t{font-family:var(--f-display);font-weight:400;text-transform:uppercase;font-size:clamp(20px,2.8vw,32px);letter-spacing:.01em;line-height:1;margin-top:6px}
+.progress{margin-top:14px;height:2px;background:var(--line);border-radius:2px;overflow:hidden}
+.progress i{display:block;height:100%;width:calc(var(--p,0) * 100%);background:var(--fucsia)}
+
+/* ---------- cierre: la palabra recortada sobre la foto ---------- */
+.cierre{background:var(--paper);border-top:1px solid var(--line);overflow:hidden}
+.cierre-in{max-width:var(--maxw);margin:0 auto;padding:clamp(44px,6.5vw,90px) var(--pad) 0}
+.cierre .top{display:flex;justify-content:space-between;align-items:flex-end;gap:26px;flex-wrap:wrap}
+.cierre h2{
+  margin:10px 0 0;font-family:var(--f-display);font-weight:400;text-transform:uppercase;
+  font-size:clamp(26px,4vw,50px);letter-spacing:.004em;line-height:1.02;max-width:15ch;
+}
+.cierre h2 em{font-style:normal;color:var(--fucsia)}
+.cierre .acciones{display:flex;gap:10px;flex-wrap:wrap}
+.senas{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.4vw,28px);
+  margin-top:clamp(28px,4vw,44px);padding-bottom:clamp(18px,2.6vw,28px);
+}
+@media (max-width:700px){.senas{grid-template-columns:1fr}}
+.sena{border-top:1px solid var(--line-2);padding-top:12px;display:flex;flex-direction:column;gap:3px}
+.sena .k{font-family:'Chivo Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--faint)}
+.sena .v{font-size:15.5px;font-weight:600;letter-spacing:-.01em}
+.sena a{text-decoration:none}
+.sena a:hover{color:var(--fucsia)}
+
+.firma{position:relative;max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+.marca{
+  margin:0;font-family:var(--f-display);font-weight:400;text-transform:uppercase;
+  font-size:clamp(58px,15.2vw,232px);line-height:.78;letter-spacing:-.012em;
+  white-space:nowrap;
+  background-image:var(--foto);background-size:cover;background-position:center 62%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-text-fill-color:transparent;
+  transform:translateY(.1em);
+}
+@supports not ((-webkit-background-clip:text) or (background-clip:text)){
+  .marca{color:var(--ink);-webkit-text-fill-color:var(--ink);background:none}
+}
+.sello{
+  position:absolute;right:var(--pad);bottom:clamp(14px,2.4vw,30px);
+  width:clamp(44px,6vw,74px);height:auto;border-radius:50%;
+  box-shadow:0 10px 26px -14px rgba(23,21,26,.55);
+}
+.pie{
+  border-top:1px solid var(--line);margin-top:clamp(6px,1vw,12px);
+}
+.pie-in{
+  max-width:var(--maxw);margin:0 auto;padding:16px var(--pad) 30px;
+  display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  font-family:'Chivo Mono',monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--faint);
+}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .cinta .via{animation:none}
+  .viewer img.shot.on{transform:none}
+  .btn:hover,.chip:hover{transform:none}
+  .entra{animation:none}
+  .sigue i{animation:none}
+  .build{height:auto}
+  .build .sticky{position:static;height:auto;padding-block:clamp(48px,7vw,84px)}
+  .frame .l2,.frame .l3{clip-path:inset(0 0 0 0)}
+  .frame .stamp{opacity:1;transform:translate(-50%,-50%) scale(1)}
+}
+</style>
+
+<div class="bar entra d1">
+  <div class="bar-in">
+    <div class="lockup">
+      <img class="iso" src="img/iso.png" alt="Isotipo de VALLEVERDE Eventos">
+      <span class="txt"><b>VALLEVERDE</b><small>Empresas</small></span>
+    </div>
+    <div class="right">
+      <span class="meta">Bahía Blanca · hasta 120 personas</span>
+      <a class="mini-cta" href="#resumen">Consultar</a>
+    </div>
+  </div>
+</div>
+
+<section class="franja entra d2">
+  <p class="eyebrow">Armá tu evento</p>
+  <h1 class="solo-lectores">Elegí cómo se ve tu evento antes de consultar — VALLEVERDE Eventos, Bahía Blanca</h1>
+  <div class="mancha entra d3">
+    <svg viewBox="0 0 1000 152" xmlns="http://www.w3.org/2000/svg" role="img"
+         aria-label="VALLEVERDE — Elegí cómo se ve tu evento antes de consultar" focusable="false">
+      <text class="palabra" x="0" y="130" textLength="1000" lengthAdjust="spacingAndGlyphs" font-size="142">VALLEVERDE</text>
+      <text class="frase entre-letras" x="325" y="82" textLength="378" lengthAdjust="spacingAndGlyphs" font-size="16">ELEGÍ CÓMO SE VE TU EVENTO ANTES DE CONSULTAR</text>
+      <text class="frase angosta" x="500" y="66" text-anchor="middle" font-size="33">ELEGÍ CÓMO SE VE TU EVENTO</text>
+      <text class="frase angosta" x="500" y="105" text-anchor="middle" font-size="33">ANTES DE CONSULTAR</text>
+    </svg>
+  </div>
+</section>
+
+<main class="stage">
+  <div class="stage-in">
+    <div class="viewer entra d4" id="viewer">
+      <img class="shot" data-key="salon|corporativo" src="img/sal-noche.jpg" alt="Salón vacío iluminado de noche, listo para un evento.">
+      <img class="shot" data-key="salon|sunset" src="img/sal-dia.jpg" alt="Interior del salón con piso de madera y ventanales, de día.">
+      <img class="shot" data-key="parque|corporativo" src="img/par-noche.jpg" alt="Parque de noche con guirnaldas de luces.">
+      <img class="shot" data-key="parque|sunset" src="img/par-dia.jpg" alt="Parque de día con sillones blancos sobre el césped.">
+      <img class="shot" data-key="ambos|corporativo" src="img/amb-noche.jpg" alt="Salón iluminado de noche visto desde el parque, con sillones en el césped.">
+      <img class="shot" data-key="ambos|sunset" src="img/amb-dia.jpg" alt="Ventanales del salón abiertos al parque durante el día.">
+      <img class="mark" src="img/iso.png" alt="">
+      <div class="tag" id="tags"></div>
+    </div>
+  </div>
+</main>
+
+<section class="panel">
+  <div class="opts entra d5">
+    <div class="opt">
+      <div class="opt-h"><span class="n">01 — Formato</span><span class="v" id="v-formato">Corporativo · 6 h</span></div>
+      <div class="row" id="g-formato" role="group" aria-label="Formato del evento">
+        <button class="chip" data-val="corporativo" aria-pressed="true">Corporativo · 6 h</button>
+        <button class="chip" data-val="sunset" aria-pressed="false">Sunset · 3 h</button>
+      </div>
+    </div>
+
+    <div class="opt">
+      <div class="opt-h"><span class="n">02 — Sector</span><span class="v" id="v-sector">Salón + parque</span></div>
+      <div class="row" id="g-sector" role="group" aria-label="Sector del predio">
+        <button class="chip" data-val="salon" aria-pressed="false">Salón</button>
+        <button class="chip" data-val="parque" aria-pressed="false">Parque</button>
+        <button class="chip" data-val="ambos" aria-pressed="true">Salón + parque</button>
+      </div>
+    </div>
+
+    <div class="opt">
+      <div class="opt-h"><span class="n">03 — Invitados</span><span class="v" id="v-inv">80 personas</span></div>
+      <div class="guests">
+        <input id="inv" type="range" min="15" max="120" step="5" value="80" aria-label="Cantidad aproximada de invitados">
+        <div class="read"><span id="inv-num">80</span><small>personas</small></div>
+      </div>
+    </div>
+
+    <div class="opt">
+      <div class="opt-h"><span class="n">04 — Servicios</span><span class="v" id="v-svc">4 elegidos</span></div>
+      <div class="row" id="g-svc" role="group" aria-label="Servicios incluidos">
+        <button class="chip svc" data-val="Catering salado" aria-pressed="true">Catering salado</button>
+        <button class="chip svc" data-val="Barra de tragos" aria-pressed="true">Barra de tragos</button>
+        <button class="chip svc" data-val="Mesa de postres" aria-pressed="false">Mesa de postres</button>
+        <button class="chip svc" data-val="DJ" aria-pressed="true">DJ</button>
+        <button class="chip svc" data-val="Proyección y sonido" aria-pressed="true">Proyección y sonido</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="summary" id="resumen">
+    <div class="sum-l">
+      <h3>Tu evento</h3>
+      <p class="sum-line" id="sum-line"></p>
+      <p class="sum-svc" id="sum-svc"></p>
+      <p class="sum-note">No publicamos precios porque cada propuesta se arma con estos datos. Mandanos la configuración y te devolvemos el presupuesto por escrito.</p>
+    </div>
+    <div class="sum-r">
+      <a class="btn btn-1" id="btn-wa" href="#">Consultar disponibilidad</a>
+      <a class="btn btn-2" href="https://wa.me/5492915394401" target="_blank" rel="noopener">Hablar por WhatsApp</a>
+      <p class="fine">Se abre WhatsApp con tu configuración ya escrita.</p>
+      <button class="copiar" id="btn-copiar" type="button">Copiar link de esta configuración</button>
+    </div>
+  </div>
+</section>
+
+<p class="sigue"><i></i> Seguí bajando <i></i></p>
+
+<!-- ============ PUENTE ============ -->
+<section class="puente">
+  <div class="puente-in">
+    <p class="eyebrow" style="color:var(--faint)">Ya lo armaste</p>
+    <h2>Ahora mirá <em>dónde</em> pasa</h2>
+    <div class="datos">
+      <div class="dato">
+        <span class="n">120</span>
+        <span class="k">Capacidad</span>
+        <span class="d">Personas como máximo, en cóctel, mesas o auditorio.</span>
+      </div>
+      <div class="dato">
+        <span class="n">2</span>
+        <span class="k">Formatos</span>
+        <span class="d">Corporativo de 6 horas o Sunset de 3.</span>
+      </div>
+      <div class="dato">
+        <span class="n">1</span>
+        <span class="k">Predio</span>
+        <span class="d">Salón, parque y estacionamiento interno, todo adentro.</span>
+      </div>
+    </div>
+  </div>
+  <div class="cinta">
+    <div class="via" aria-hidden="true"><span>Catering salado<b>·</b>Barra de tragos<b>·</b>Mesa de postres<b>·</b>DJ<b>·</b>Equipo de sonido<b>·</b>Micrófono<b>·</b>Videoproyector<b>·</b>Estacionamiento interno<b>·</b>Salón climatizado<b>·</b>Parque<b>·</b></span><span>Catering salado<b>·</b>Barra de tragos<b>·</b>Mesa de postres<b>·</b>DJ<b>·</b>Equipo de sonido<b>·</b>Micrófono<b>·</b>Videoproyector<b>·</b>Estacionamiento interno<b>·</b>Salón climatizado<b>·</b>Parque<b>·</b></span></div>
+  </div>
+</section>
+
+<!-- ============ SE ARMA AL SCROLLEAR ============ -->
+<section class="build" id="build">
+  <div class="sticky">
+    <div class="build-in">
+      <div class="build-head">
+        <h2>El mismo lugar, de mediodía a la última copa</h2>
+        <div class="step" id="steps">
+          <span data-i="0" class="on">Jornada</span>
+          <span data-i="1">Sunset</span>
+          <span data-i="2">Corporativo</span>
+        </div>
+      </div>
+
+      <div class="frame" id="frame">
+        <img class="layer l1" src="img/build-dia.jpg" alt="El salón y el parque de día, vacíos.">
+        <img class="layer l2" src="img/build-tarde.jpg" alt="Sector lounge con velas encendidas al atardecer.">
+        <img class="layer l3" src="img/build-noche.jpg" alt="El salón iluminado de noche visto desde el parque.">
+        <div class="veil"></div>
+        <img class="stamp" id="stamp" src="img/iso.png" alt="">
+        <div class="cap">
+          <div class="k" id="cap-k">Mediodía</div>
+          <div class="t" id="cap-t">Capacitaciones y jornadas internas</div>
+        </div>
+      </div>
+      <div class="progress"><i id="pbar"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CIERRE ============ -->
+<section class="cierre">
+  <div class="cierre-in">
+    <div class="top">
+      <div>
+        <p class="eyebrow" style="text-align:left">Antes de decidir</p>
+        <h2>Vení a <em>conocerlo</em> con tiempo</h2>
+      </div>
+      <div class="acciones">
+        <a class="btn btn-1" href="#resumen">Consultar disponibilidad</a>
+        <a class="btn btn-2" href="https://wa.me/5492915394401" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+
+    <div class="senas">
+      <div class="sena">
+        <span class="k">Ingreso vehicular</span>
+        <span class="v">La Falda 2552</span>
+        <span class="k" style="letter-spacing:.06em">Bahía Blanca · estacionamiento interno</span>
+      </div>
+      <div class="sena">
+        <span class="k">Ingreso peatonal</span>
+        <span class="v">José Hernández 1053</span>
+        <span class="k" style="letter-spacing:.06em">Bahía Blanca · acceso directo al salón</span>
+      </div>
+      <div class="sena">
+        <span class="k">Escribinos</span>
+        <span class="v"><a href="mailto:salonvalleverde@gmail.com">salonvalleverde@gmail.com</a></span>
+        <span class="k" style="letter-spacing:.06em"><a href="https://instagram.com/valleverde_eventos" target="_blank" rel="noopener">@valleverde_eventos</a></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="firma">
+    <p class="marca" style="--foto:url('img/amb-noche.jpg')">Valleverde</p>
+    <img class="sello" src="img/iso.png" alt="Isotipo de VALLEVERDE Eventos">
+  </div>
+
+  <div class="pie">
+    <div class="pie-in">
+      <span>VALLEVERDE Eventos · Bahía Blanca</span>
+      <span>Eventos de empresa · hasta 120 personas</span>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  /* ---------------- configurador ---------------- */
+  var estado = {
+    formato:'corporativo',
+    sector:'ambos',
+    invitados:80,
+    servicios:['Catering salado','Barra de tragos','DJ','Proyección y sonido']
+  };
+  var NOMBRE_FORMATO = { corporativo:'Corporativo · 6 h', sunset:'Sunset · 3 h' };
+  var NOMBRE_SECTOR  = { salon:'Salón', parque:'Parque', ambos:'Salón + parque' };
+  var WA = 'https://wa.me/5492915394401';
+
+  var $ = function(id){ return document.getElementById(id); };
+  var imgs = Array.prototype.slice.call(document.querySelectorAll('#viewer img.shot'));
+
+  // Si el link trae una configuración, se levanta antes de pintar nada.
+  // Así se puede mandar un link con el evento ya armado.
+  (function desdeURL(){
+    try{
+      var q = new URLSearchParams(location.search);
+      if(q.get('f') && NOMBRE_FORMATO[q.get('f')]) estado.formato = q.get('f');
+      if(q.get('s') && NOMBRE_SECTOR[q.get('s')])  estado.sector  = q.get('s');
+      var n = parseInt(q.get('i'), 10);
+      if(!isNaN(n)) estado.invitados = Math.min(120, Math.max(15, Math.round(n / 5) * 5));
+      if(q.get('sv') !== null){
+        var pedidos = q.get('sv') ? q.get('sv').split('|') : [];
+        var validos = Array.prototype.map.call(
+          document.querySelectorAll('#g-svc .chip'), function(c){ return c.dataset.val; });
+        estado.servicios = pedidos.filter(function(v){ return validos.indexOf(v) > -1; });
+      }
+    }catch(e){ /* sin querystring se sigue con los valores por defecto */ }
+
+    Array.prototype.forEach.call(document.querySelectorAll('#g-formato .chip'), function(c){
+      c.setAttribute('aria-pressed', String(c.dataset.val === estado.formato));
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('#g-sector .chip'), function(c){
+      c.setAttribute('aria-pressed', String(c.dataset.val === estado.sector));
+    });
+    Array.prototype.forEach.call(document.querySelectorAll('#g-svc .chip'), function(c){
+      c.setAttribute('aria-pressed', String(estado.servicios.indexOf(c.dataset.val) > -1));
+    });
+    document.getElementById('inv').value = estado.invitados;
+  })();
+
+  function grupoUnico(idGrupo, campo){
+    $(idGrupo).addEventListener('click', function(e){
+      var b = e.target.closest('.chip'); if(!b) return;
+      Array.prototype.forEach.call(this.querySelectorAll('.chip'), function(c){
+        c.setAttribute('aria-pressed', String(c === b));
+      });
+      estado[campo] = b.dataset.val;
+      pintar();
+    });
+  }
+  grupoUnico('g-formato','formato');
+  grupoUnico('g-sector','sector');
+
+  $('g-svc').addEventListener('click', function(e){
+    var b = e.target.closest('.chip'); if(!b) return;
+    var on = b.getAttribute('aria-pressed') === 'true';
+    b.setAttribute('aria-pressed', String(!on));
+    estado.servicios = Array.prototype.filter.call(this.querySelectorAll('.chip'), function(c){
+      return c.getAttribute('aria-pressed') === 'true';
+    }).map(function(c){ return c.dataset.val; });
+    pintar();
+  });
+
+  $('inv').addEventListener('input', function(){
+    estado.invitados = parseInt(this.value, 10);
+    pintar();
+  });
+
+  function listar(a){
+    if(!a.length) return 'sin servicios agregados';
+    if(a.length === 1) return a[0].toLowerCase();
+    return a.slice(0,-1).join(', ').toLowerCase() + ' y ' + a[a.length-1].toLowerCase();
+  }
+
+  function pintar(){
+    var clave = estado.sector + '|' + estado.formato;
+    imgs.forEach(function(im){ im.classList.toggle('on', im.dataset.key === clave); });
+
+    $('tags').innerHTML =
+      '<b class="hot">' + NOMBRE_FORMATO[estado.formato] + '</b>' +
+      '<b>' + NOMBRE_SECTOR[estado.sector] + '</b>' +
+      '<b>' + estado.invitados + ' personas</b>';
+
+    $('v-formato').textContent = NOMBRE_FORMATO[estado.formato];
+    $('v-sector').textContent  = NOMBRE_SECTOR[estado.sector];
+    $('v-inv').textContent     = estado.invitados + ' personas';
+    $('inv-num').textContent   = estado.invitados;
+    $('v-svc').textContent     = estado.servicios.length === 1 ? '1 elegido' : estado.servicios.length + ' elegidos';
+
+    $('sum-line').innerHTML =
+      NOMBRE_FORMATO[estado.formato] + ' en <b>' + NOMBRE_SECTOR[estado.sector].toLowerCase() +
+      '</b>, para <b>' + estado.invitados + ' personas</b>.';
+    $('sum-svc').textContent = 'Con ' + listar(estado.servicios) + '.';
+
+    var lineas = [
+      'Hola, armé mi evento en la página y quiero consultar disponibilidad.',
+      '',
+      'Formato: ' + NOMBRE_FORMATO[estado.formato],
+      'Sector: ' + NOMBRE_SECTOR[estado.sector],
+      'Invitados (aprox.): ' + estado.invitados,
+      'Servicios: ' + (estado.servicios.length ? estado.servicios.join(', ') : 'a definir')
+    ];
+    $('btn-wa').href = WA + '?text=' + encodeURIComponent(lineas.join('\n'));
+
+    try{
+      var q2 = new URLSearchParams();
+      q2.set('f', estado.formato);
+      q2.set('s', estado.sector);
+      q2.set('i', estado.invitados);
+      q2.set('sv', estado.servicios.join('|'));
+      history.replaceState(null, '', location.pathname + '?' + q2.toString());
+    }catch(e){ /* algunos visores no dejan tocar la URL */ }
+  }
+
+  $('btn-wa').setAttribute('target','_blank');
+  $('btn-wa').setAttribute('rel','noopener');
+  pintar();
+
+  var copiar = $('btn-copiar');
+  copiar.addEventListener('click', function(){
+    var vuelve = function(){
+      setTimeout(function(){ copiar.textContent = 'Copiar link de esta configuración'; }, 2200);
+    };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(location.href).then(function(){
+        copiar.textContent = 'Link copiado';
+        vuelve();
+      }, function(){
+        copiar.textContent = 'Copialo de la barra del navegador';
+        vuelve();
+      });
+    } else {
+      copiar.textContent = 'Copialo de la barra del navegador';
+      vuelve();
+    }
+  });
+
+  /* ---------------- el lugar se arma al scrollear ---------------- */
+  var build = $('build'), frame = $('frame'), pbar = $('pbar');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){
+    // sin animación: se muestra el estado final, con su epígrafe
+    $('cap-k').textContent = 'Noche';
+    $('cap-t').textContent = 'Corporativo · 6 horas';
+    Array.prototype.forEach.call(document.querySelectorAll('#steps span'), function(el){
+      el.classList.toggle('on', el.dataset.i === '2');
+    });
+    pbar.style.width = '100%';
+    return;
+  }
+
+  var pasos = Array.prototype.slice.call(document.querySelectorAll('#steps span'));
+  var CAPS = [
+    ['Mediodía','Capacitaciones y jornadas internas'],
+    ['Atardecer','Sunset · 3 horas'],
+    ['Noche','Corporativo · 6 horas']
+  ];
+  var capK = $('cap-k'), capT = $('cap-t'), capActual = -1;
+
+  function tramo(p, a, b){ return Math.min(1, Math.max(0, (p - a) / (b - a))); }
+
+  var pendiente = false;
+  function alScrollear(){
+    if(pendiente) return;
+    pendiente = true;
+    requestAnimationFrame(function(){
+      pendiente = false;
+      var r = build.getBoundingClientRect();
+      var recorrido = build.offsetHeight - window.innerHeight;
+      var p = recorrido > 0 ? Math.min(1, Math.max(0, -r.top / recorrido)) : 0;
+
+      var w2 = tramo(p, .18, .52);
+      var w3 = tramo(p, .50, .84);
+      frame.style.setProperty('--w2', (100 - w2 * 100).toFixed(2) + '%');
+      frame.style.setProperty('--w3', (100 - w3 * 100).toFixed(2) + '%');
+
+      var s = tramo(p, .62, .96);
+      frame.style.setProperty('--so', (s * 0.96).toFixed(3));
+      frame.style.setProperty('--ss', (0.62 + s * 0.38).toFixed(3));
+      build.style.setProperty('--p', p.toFixed(3));
+      pbar.style.width = (p * 100).toFixed(1) + '%';
+
+      var i = w3 > .5 ? 2 : (w2 > .5 ? 1 : 0);
+      if(i !== capActual){
+        capActual = i;
+        capK.textContent = CAPS[i][0];
+        capT.textContent = CAPS[i][1];
+        pasos.forEach(function(el){ el.classList.toggle('on', +el.dataset.i === i); });
+      }
+    });
+  }
+  window.addEventListener('scroll', alScrollear, { passive:true });
+  window.addEventListener('resize', alScrollear);
+  alScrollear();
+})();
+</script>
