@@ -1,4 +1,5 @@
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Configurador VALLEVERDE</title>
 <meta name="description" content="Armá tu evento de empresa en VALLEVERDE y mirá cómo queda antes de consultar. Salón, parque y estacionamiento interno en Bahía Blanca, hasta 120 personas.">
 <meta name="theme-color" content="#F6F3EE">
@@ -107,6 +108,16 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 @media (max-width:900px){
   .mancha .entre-letras{display:none}
   .mancha .angosta{display:inline}
+}
+.frase-movil{display:none}
+@media (max-width:700px){
+  .mancha .entre-letras,.mancha .angosta{display:none}
+  .frase-movil{
+    display:block;text-align:center;margin:16px auto 0;
+    padding-inline:var(--pad);max-width:24ch;
+    font-size:clamp(17px,4.7vw,23px);font-weight:600;line-height:1.2;
+    letter-spacing:-.02em;color:var(--ink);text-wrap:balance;
+  }
 }
 .solo-lectores{
   position:absolute;width:1px;height:1px;overflow:hidden;
@@ -315,10 +326,10 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
 .sena a{text-decoration:none}
 .sena a:hover{color:var(--fucsia)}
 
-.firma{position:relative;max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad)}
+.firma{position:relative;max-width:var(--maxw);margin:0 auto;padding-inline:var(--pad);overflow:hidden}
 .marca{
-  margin:0;font-family:var(--f-display);font-weight:400;text-transform:uppercase;
-  font-size:clamp(58px,15.2vw,232px);line-height:.78;letter-spacing:-.012em;
+  margin:0;font-family:'Lemon Milk',var(--f-display);font-weight:700;text-transform:uppercase;
+  font-size:clamp(40px,12.4vw,174px);line-height:.92;letter-spacing:-.004em;
   white-space:nowrap;
   background-image:var(--foto);background-size:cover;background-position:center 62%;
   -webkit-background-clip:text;background-clip:text;color:transparent;
@@ -342,6 +353,20 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
   font-family:'Chivo Mono',monospace;font-size:10.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--faint);
 }
+
+/* ---------- celular ---------- */
+@media (max-width:560px){
+  body{font-size:16.5px}
+  .cta-row,.acciones{flex-direction:column;align-items:stretch;gap:10px}
+  .cta-row .btn,.acciones .btn{width:100%}
+  .chip{padding:13px 18px;font-size:14.5px}
+  .opt-h{flex-direction:column;gap:2px;align-items:flex-start}
+  .guests .read{font-size:30px}
+  .canal,.sena{padding-block:14px}
+  .mini-cta{padding:10px 15px}
+  .frame{height:min(52vh,420px)}
+}
+html,body{overflow-x:clip}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
@@ -382,6 +407,7 @@ button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
       <text class="frase angosta" x="500" y="105" text-anchor="middle" font-size="33">ANTES DE CONSULTAR</text>
     </svg>
   </div>
+  <p class="frase-movil">Elegí cómo se ve tu evento antes de consultar</p>
 </section>
 
 <main class="stage">
